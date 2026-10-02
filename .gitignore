@@ -1,0 +1,15 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Maven
+**/target/
+
+# Java
+*.class
+
+# Spring Boot local configuration / secrets
+**/src/main/resources/application.properties
+**/src/main/resources/application.yaml
