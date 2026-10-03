@@ -121,9 +121,15 @@ public class FlightCardDTO {
         return segments.get(segments.size() - 1).getArrivalDateTime().substring(11);
     }
 
-    public List<Map<String, Object>> getPassengers() {
-        List<Segment> segments = firstSliceSegments();
-        return segments == null ? null : segments.get(0).getPassengers();
+    @JsonProperty("passengers")
+    private List<Passenger> passengers;
+
+    public List<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(List<Passenger> passengers) {
+        this.passengers = passengers;
     }
 
 
@@ -135,9 +141,6 @@ public class FlightCardDTO {
 
         @JsonProperty("arriving_at")
         private String arrivalDateTime;
-
-        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-        private List<Map<String, Object>> passengers;
 
         public String getDepartureDateTime() {
             return departureDateTime;
@@ -154,13 +157,29 @@ public class FlightCardDTO {
         public void setArrivalDateTime(String arrivalDateTime) {
             this.arrivalDateTime = arrivalDateTime;
         }
+    }
 
-        public List<Map<String, Object>> getPassengers() {
-            return passengers;
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    @JsonPropertyOrder({"id", "type"})
+    public static class Passenger {
+
+        private String id;
+        private String type;
+
+        public String getId() {
+            return id;
         }
 
-        public void setPassengers(List<Map<String, Object>> passengers) {
-            this.passengers = passengers;
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
         }
     }
 }
