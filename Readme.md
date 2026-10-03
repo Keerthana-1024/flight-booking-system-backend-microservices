@@ -1,5 +1,3 @@
-# Flight Booking System
-
 A **Java Spring Boot microservices-based flight booking backend** integrating the **Duffel API** for flight search and booking workflows.
 
 ## Architecture
